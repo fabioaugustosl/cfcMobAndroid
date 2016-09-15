@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import br.com.virtz.www.cfcmob.R;
 
 import java.util.ArrayList;
@@ -57,7 +59,10 @@ public class TarefaAulaActivity extends AppCompatActivity {
 
 
     public void finalizarAula(View view){
-        startActivity(new Intent(getBaseContext(), IniciarAulaActivity.class));
+        Intent intentAula = new Intent(getBaseContext(), IniciarAulaActivity.class);
+        intentAula.putExtra("message", "Aula finalizada com sucesso!");
+
+        startActivity(intentAula);
     }
 
 }

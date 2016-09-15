@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -66,9 +67,21 @@ public class IniciarAulaActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        verificaSeAulaFoiFinalizada();
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+
+    private void verificaSeAulaFoiFinalizada() {
+        Intent intent = getIntent();
+        String message = intent.getStringExtra("message");
+        if(message != null){
+            Toast toastMessageAulaFinalizada = Toast.makeText(this, message, Toast.LENGTH_LONG);
+            toastMessageAulaFinalizada.show();
+        }
     }
 
 
