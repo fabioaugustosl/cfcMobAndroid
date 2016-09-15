@@ -52,7 +52,10 @@ public class TarefaAulaActivity extends AppCompatActivity {
         opcoesTarefa.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        startActivity(new Intent(getBaseContext(), AvaliacaoTarefaActivity.class));
+                        Intent intentAvaliacao = new Intent(getBaseContext(), AvaliacaoTarefaActivity.class);
+                        intentAvaliacao.putExtra("exercicio", opcoes.get(position));
+
+                        startActivity(intentAvaliacao);
                     }
                 });
     }

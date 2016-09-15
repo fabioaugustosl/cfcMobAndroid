@@ -12,7 +12,9 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +23,9 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import br.com.virtz.www.cfcmob.R;
 import br.com.virtz.www.cfcmob.datepicker.DatePickerFragment;
@@ -33,6 +37,9 @@ public class IniciarAulaActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+
+    List<String> categorias = new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +76,11 @@ public class IniciarAulaActivity extends AppCompatActivity {
         });
 
         verificaSeAulaFoiFinalizada();
+
+        categorias.add("Categoria A");
+        categorias.add("Categoria B");
+
+        addItensNoCombo();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -128,12 +140,28 @@ public class IniciarAulaActivity extends AppCompatActivity {
 
 
     public void irParaCadastrarUsuario() {
-        startActivity(new Intent(getBaseContext(), IniciarAulaActivity.class));
+        startActivity(new Intent(getBaseContext(), NovoAlunoActivity.class));
     }
 
     public void sair() {
         startActivity(new Intent(getBaseContext(), LoginActivity.class));
     }
+
+
+    public void addItensNoCombo() {
+
+        Spinner spinner = (Spinner) findViewById(R.id.comboCategoria);
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, categorias);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataAdapter);
+    }
+
+    public void addListenerOnSpinnerItemSelection() {
+
+    }
+
 
 
 }

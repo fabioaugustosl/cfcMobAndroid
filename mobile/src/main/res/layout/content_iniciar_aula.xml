@@ -26,10 +26,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/edtIdCondutor"
-        android:layout_centerVertical="true"
         android:inputType="number"
         android:singleLine="true"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtMatricula"
+        android:layout_alignParentRight="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,11 +40,12 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Digite a matrícula do aluno:"
         android:id="@+id/txtMatricula"
-        android:layout_above="@+id/edtIdCondutor"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentEnd="false"
         android:inputType="text"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:layout_marginTop="75dp"
+        android:layout_below="@+id/txtDataAula"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold" />
 
 
     <Button
@@ -49,10 +53,31 @@
         android:layout_height="wrap_content"
         android:text="Iniciar"
         android:id="@+id/btnIniciarAula"
-        android:layout_below="@+id/edtIdCondutor"
         android:onClick="iniciarAula"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="114dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/edtIdCondutor" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Qual categoria?"
+        android:id="@+id/txtTipoAula"
+        android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="77dp" />
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/edtIdCondutor" />
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/comboCategoria"
+        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/edtIdCondutor"
+        android:layout_alignParentStart="false"
+        android:layout_marginTop="10dp" />
 
 
 </RelativeLayout>
