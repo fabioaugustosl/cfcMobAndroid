@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">CFCmob</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Senha (opcional)</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="error_invalid_email">O email digitado é inválido.</string>
+    <string name="error_invalid_password">A senha é muito pequena.</string>
+    <string name="error_incorrect_password">Senha incorreta.</string>
+    <string name="error_field_required">Campo obrigatório</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_inicio_aula">Iniciar Aula</string>
+
+
+    <string name="menu_configuracoes">Configurações</string>
+    <string name="menu_cad_aluno">Cadastrar Aluno</string>
+    <string name="menu_sair">Sair</string>
+
+
+    <!-- Tela inicio aula-->
+    <string name="qual_id_condutor">Qual o ID do condutor?</string>
+    <string name="horario_inicio_aula">Horário de início:</string>
+    <string name="botao_inicio_aula">Iniciar aula</string>
+
+
+    <!-- Tela login -->
+    <string name="title_activity_login">CFC Mobile - Login</string>
+    <string name="title_activity_tarefa_aula">Qual exercício será executado?"</string>
+    <string name="action_settings">Configurações 1</string>
+
+
+    <!-- Tela tarefas-->
+    <string name="botao_finalizar_aula">Terminar Aula</string>
+    <string name="txtTituloAvalie">Avalie a execução do exercício.</string>
+    <string name="title_activity_iniciar_aula">Iniciar a aula</string>
+
+</resources>

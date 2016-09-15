@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.virtz.www.cfcmob.activity.IniciarAulaActivity">
+    <item
+        android:id="@+id/menu_configuracoes"
+        android:orderInCategory="100"
+        android:title="@string/menu_configuracoes"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_cad_aluno"
+        android:orderInCategory="100"
+        android:title="@string/menu_cad_aluno"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_sair"
+        android:orderInCategory="100"
+        android:title="@string/menu_sair"
+        app:showAsAction="never" />
+
+</menu>
