@@ -135,7 +135,7 @@ public class IniciarAulaActivity extends AppCompatActivity {
 
 
     public void irParaConfiguracoes() {
-        startActivity(new Intent(getBaseContext(), IniciarAulaActivity.class));
+        startActivity(new Intent(getBaseContext(), ConfiguracaoActivity.class));
     }
 
 

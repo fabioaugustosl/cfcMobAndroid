@@ -23,7 +23,6 @@ public class AvaliacaoTarefaActivity extends AppCompatActivity {
             txtAvalie.setText("Como foi a execução do exercício '"+nomeExercicio+"' pelo aluno?");
         }
 
-
     }
 
     public void avaliarTarefa(View view){

@@ -54,7 +54,8 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".activity.NovoAlunoActivity"></activity>
+        <activity android:name=".activity.NovoAlunoActivity" />
+        <activity android:name=".activity.ConfiguracaoActivity"></activity>
     </application>
 
 </manifest>
