@@ -1,29 +1,30 @@
 package br.com.virtz.www.cfcmob.bean;
 
 
-
 public class Exercicio {
 
-    private Integer id;
+    private String id;
     private String titulo;
-    private Integer idEmpresa;
+    private String idEmpresa;
     private Categoria categoria;
 
 
-    public Integer getId() {
+    public Exercicio() {
+    }
+
+    public Exercicio(String id, String titulo) {
+        this.id = id;
+        this.titulo = titulo;
+    }
+
+
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public Integer getIdEmpresa() {
-        return idEmpresa;
-    }
-
-    public void setIdEmpresa(Integer idEmpresa) {
-        this.idEmpresa = idEmpresa;
     }
 
     public String getTitulo() {
@@ -34,6 +35,14 @@ public class Exercicio {
         this.titulo = titulo;
     }
 
+    public String getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(String idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
+
     public Categoria getCategoria() {
         return categoria;
     }
@@ -41,5 +50,4 @@ public class Exercicio {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-
 }

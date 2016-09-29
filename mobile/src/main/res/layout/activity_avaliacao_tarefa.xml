@@ -25,16 +25,19 @@
         android:id="@+id/ratingBar"
         android:layout_above="@+id/btnAvaliar"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="117dp" />
+        android:layout_marginBottom="130dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Avaliar"
         android:id="@+id/btnAvaliar"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="87dp"
         android:layout_alignEnd="@+id/ratingBar"
         android:onClick="avaliarTarefa"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
         android:layout_alignStart="@+id/ratingBar" />
+
+
 </RelativeLayout>

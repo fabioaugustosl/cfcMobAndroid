@@ -11,14 +11,14 @@ public class ExercicioMapper {
     public ContentValues exercicioToContent(Exercicio exercicio){
         ContentValues c = new ContentValues();
         if(exercicio.getId() != null){
-            c.put("id", exercicio.getId().toString());
+            c.put("id", exercicio.getId());
         }
         c.put("titulo", exercicio.getTitulo());
         if(exercicio.getIdEmpresa() != null){
-            c.put("id_empresa", exercicio.getIdEmpresa().toString());
+            c.put("id_empresa", exercicio.getIdEmpresa());
         }
         if(exercicio.getCategoria() != null){
-            c.put("id_categoria", exercicio.getCategoria().getId().toString());
+            c.put("id_categoria", exercicio.getCategoria().getId());
         }
         return c;
     }

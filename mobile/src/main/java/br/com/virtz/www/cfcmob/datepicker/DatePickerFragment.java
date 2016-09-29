@@ -48,11 +48,11 @@ public class DatePickerFragment extends DialogFragment implements TimePickerDial
         /*.........Set a custom title for picker........*/
         TextView tvTitle = new TextView(getActivity());
         tvTitle.setText("Qual horário de início da aula?");
-        tvTitle.setBackgroundColor(Color.parseColor("#EEE8AA"));
-        tvTitle.setPadding(5, 3, 5, 3);
+        tvTitle.setBackgroundColor(Color.parseColor("#6680cbc4"));
+        tvTitle.setPadding(5, 5, 5, 5);
+        tvTitle.setTextSize(18);
         tvTitle.setGravity(Gravity.CENTER_HORIZONTAL);
         tpd.setCustomTitle(tvTitle);
-
 
         return tpd;
     }

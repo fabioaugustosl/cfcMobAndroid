@@ -3,15 +3,17 @@ package br.com.virtz.www.cfcmob.bean;
 
 public class Categoria {
 
-    private Integer id;
+    private String id;
     private String nome;
-    private Integer idEmpresa;
+    private String idEmpresa;
 
-    public Integer getId() {
+
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -23,12 +25,11 @@ public class Categoria {
         this.nome = nome;
     }
 
-    public Integer getIdEmpresa() {
+    public String getIdEmpresa() {
         return idEmpresa;
     }
 
-    public void setIdEmpresa(Integer idEmpresa) {
+    public void setIdEmpresa(String idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
-
 }

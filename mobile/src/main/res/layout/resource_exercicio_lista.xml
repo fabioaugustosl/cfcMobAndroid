@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:padding="5dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/common_signin_btn_light_text_disabled"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_seta_direita" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="8"
+        android:layout_gravity="center_vertical" >
+
+            <TextView
+                    android:id="@+id/tituloExercicio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Principais erros.."
+                    android:padding="5dp"
+                    android:height="32dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/common_signin_btn_dark_text_default"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/fonte_titulo" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

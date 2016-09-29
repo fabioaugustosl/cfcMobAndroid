@@ -48,15 +48,6 @@ public class IniciarAulaActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Insira o ID do aluno e clique em iniciar aula.", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final TextView txtDataAula = (TextView) findViewById(R.id.txtDataAula);
