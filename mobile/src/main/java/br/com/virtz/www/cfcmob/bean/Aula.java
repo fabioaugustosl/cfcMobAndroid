@@ -1,23 +1,24 @@
 package br.com.virtz.www.cfcmob.bean;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Aula {
+public class Aula implements Serializable{
 
-    private Integer id;
+    private String id;
     private Date data;
-    private Date horaInicio;
-    private Date horaFim;
-    private Instrutor instrutor;
-    private Veiculo veiculo;
-    private Aluno aluno;
+    private String periodo;
+    private String aluno;
+    private String cfc;
+    private String instrutor;
 
-    public Integer getId() {
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -29,43 +30,35 @@ public class Aula {
         this.data = data;
     }
 
-    public Date getHoraInicio() {
-        return horaInicio;
+    public String getPeriodo() {
+        return periodo;
     }
 
-    public void setHoraInicio(Date horaInicio) {
-        this.horaInicio = horaInicio;
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
     }
 
-    public Date getHoraFim() {
-        return horaFim;
-    }
-
-    public void setHoraFim(Date horaFim) {
-        this.horaFim = horaFim;
-    }
-
-    public Instrutor getInstrutor() {
-        return instrutor;
-    }
-
-    public void setInstrutor(Instrutor instrutor) {
-        this.instrutor = instrutor;
-    }
-
-    public Veiculo getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
-    }
-
-    public Aluno getAluno() {
+    public String getAluno() {
         return aluno;
     }
 
-    public void setAluno(Aluno aluno) {
+    public void setAluno(String aluno) {
         this.aluno = aluno;
+    }
+
+    public String getCfc() {
+        return cfc;
+    }
+
+    public void setCfc(String cfc) {
+        this.cfc = cfc;
+    }
+
+    public String getInstrutor() {
+        return instrutor;
+    }
+
+    public void setInstrutor(String instrutor) {
+        this.instrutor = instrutor;
     }
 }

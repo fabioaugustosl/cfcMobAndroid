@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -29,11 +30,22 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.virtz.www.cfcmob.R;
+import br.com.virtz.www.cfcmob.bean.Endereco;
+import br.com.virtz.www.cfcmob.bean.Instrutor;
+import br.com.virtz.www.cfcmob.restServices.PostomanService;
+import br.com.virtz.www.cfcmob.task.CarregarCfcTask;
+import br.com.virtz.www.cfcmob.util.Util;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -296,7 +308,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
 
-    public class AutenticadorUsuario extends AsyncTask<Void, Void, Boolean> {
+    public class AutenticadorUsuario extends AsyncTask<Void, Void, Instrutor> {
 
         private final String mEmail;
         private final String mPassword;
@@ -307,14 +319,44 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         @Override
-        protected Boolean doInBackground(Void... params) {
+        protected Instrutor doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
+
+            /*
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://api.postmon.com.br/v1/cep/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            PostomanService service = retrofit.create(PostomanService.class);
+            Call<Endereco> call = service.getEndereco("35600000");
+
+            call.enqueue(new Callback<Endereco>() {
+                @Override
+                public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+                    if (response.isSuccessful()) {
+                        Endereco endereco = response.body();
+
+                        String strEndereço = "Cidade: " + endereco.getCidade() + "\n" +
+                                "Bairro: " + endereco.getBairro() + "\n" +
+                                "Logradouro: " + endereco.getLogradouro();
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Endereco> call, Throwable t) {
+                    Toast.makeText(LoginActivity.this,
+                            "Não foi possível realizar a requisição",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+*/
             try {
                 // Simulate network access.
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
-                return false;
+                return null;
             }
 
             for (String credential : DUMMY_CREDENTIALS) {
@@ -322,24 +364,35 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 if (pieces[0].equals(mEmail)) {
                     // Account exists, return true if the password matches.
                     //return pieces[1].equals(mPassword);
-                    return true;
+                    Instrutor instrutor = new Instrutor();
+                    instrutor.setNome("Fabio");
+                    instrutor.setId("123456789");
+                    return instrutor;
                 }
             }
 
             // TODO: register the new account here.
-            return true;
+            return null;
         }
 
         @Override
-        protected void onPostExecute(final Boolean success) {
+        protected void onPostExecute(final Instrutor instrutorSucess) {
             autenticadorUsuario = null;
             showProgress(false);
 
-            if (success) {
-               finish();
-               startActivity(new Intent(getBaseContext(), IniciarAulaActivity.class));
+            if (instrutorSucess != null) {
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("CFC_SESSAO_GERAL", 0);
+                //chamar o serviço/task que vai carregar os dados da cfc. Ao final será redirecionado para tela principal.
+                new CarregarCfcTask(getBaseContext(), pref, instrutorSucess.getCfc()).execute();
+
+                //setar o instrutor na sessão também
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("INSTRUTOR_SESSAO", Util.serialize(instrutorSucess));
+                editor.commit();
+
+                finish();
             } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
+                mPasswordView.setError(getString(R.string.error_falha_login));
                 mPasswordView.requestFocus();
             }
         }

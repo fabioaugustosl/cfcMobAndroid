@@ -1,20 +1,23 @@
 package br.com.virtz.www.cfcmob.bean;
 
 
-public class Aluno {
+import java.io.Serializable;
 
-    private Integer id;
+public class Aluno implements Serializable {
+
+    private String id;
     private String nome;
+    private String cfc;
     private String email;
     private String celular;
-    private Categoria categoria1;
-    private Categoria categoria2;
+    private String login;
 
-    public Integer getId() {
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -26,20 +29,20 @@ public class Aluno {
         this.nome = nome;
     }
 
+    public String getCfc() {
+        return cfc;
+    }
+
+    public void setCfc(String cfc) {
+        this.cfc = cfc;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Categoria getCategoria1() {
-        return categoria1;
-    }
-
-    public void setCategoria1(Categoria categoria1) {
-        this.categoria1 = categoria1;
     }
 
     public String getCelular() {
@@ -50,12 +53,12 @@ public class Aluno {
         this.celular = celular;
     }
 
-    public Categoria getCategoria2() {
-        return categoria2;
+    public String getLogin() {
+        return login;
     }
 
-    public void setCategoria2(Categoria categoria2) {
-        this.categoria2 = categoria2;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
 }

@@ -50,23 +50,7 @@
             android:textAlignment="center"
             android:layout_below="@+id/txtMatricula" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Qual categoria?"
-            android:id="@+id/txtTipoAula"
-            android:textStyle="bold"
-            android:textSize="@dimen/fonte_titulo"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="36dp" />
 
-        <Spinner
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/comboCategoria"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="10dp" />
 
     </LinearLayout>
 

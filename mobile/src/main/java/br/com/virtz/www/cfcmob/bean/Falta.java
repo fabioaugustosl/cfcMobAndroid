@@ -3,7 +3,7 @@ package br.com.virtz.www.cfcmob.bean;
 
 import java.io.Serializable;
 
-public class Exercicio implements Serializable {
+public class Falta implements Serializable {
 
 
     private String id;
@@ -11,10 +11,10 @@ public class Exercicio implements Serializable {
     private String categoria;
 
 
-    public Exercicio() {
+    public Falta() {
     }
 
-    public Exercicio(String id, String nome) {
+    public Falta(String id, String nome) {
         this.id = id;
         this.nome = nome;
     }

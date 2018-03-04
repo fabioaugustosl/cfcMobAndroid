@@ -30,7 +30,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxWidth="100dp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/cfc_logo"/>
+
+
             <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -68,8 +77,11 @@
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="25dp"
                 android:text="@string/action_sign_in"
+                android:textSize="30dp"
+                android:textColor="@android:color/white"
+                android:background="#d40030"
                 android:textStyle="bold" />
 
         </LinearLayout>

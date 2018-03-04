@@ -2,6 +2,7 @@ package br.com.virtz.www.cfcmob.activity;
 
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -28,7 +29,11 @@ import java.util.Date;
 import java.util.List;
 
 import br.com.virtz.www.cfcmob.R;
+import br.com.virtz.www.cfcmob.bean.Instrutor;
 import br.com.virtz.www.cfcmob.datepicker.DatePickerFragment;
+import br.com.virtz.www.cfcmob.task.CarregarCfcTask;
+import br.com.virtz.www.cfcmob.task.IniciarAulaTask;
+import br.com.virtz.www.cfcmob.util.Util;
 
 public class IniciarAulaActivity extends AppCompatActivity {
 
@@ -37,14 +42,15 @@ public class IniciarAulaActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+    private  EditText edtIdContutor = null;
 
-    List<String> categorias = new ArrayList<String>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciar_aula);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -55,7 +61,7 @@ public class IniciarAulaActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         txtDataAula.setText("Data da aula: " + sdf.format(dataAtual));
 
-        final EditText edtIdContutor = (EditText) findViewById(R.id.edtIdCondutor);
+        edtIdContutor = (EditText) findViewById(R.id.edtIdCondutor);
         edtIdContutor.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
@@ -68,10 +74,7 @@ public class IniciarAulaActivity extends AppCompatActivity {
 
         verificaSeAulaFoiFinalizada();
 
-        categorias.add("Categoria A");
-        categorias.add("Categoria B");
-
-        addItensNoCombo();
+        //addItensNoCombo();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -120,8 +123,24 @@ public class IniciarAulaActivity extends AppCompatActivity {
 
 
     public void iniciarAula(View view) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getFragmentManager(), "TimePicker");
+        // esse trecho era quando aparecia o relogia para início da aula.
+        //DialogFragment newFragment = new DatePickerFragment();
+        //newFragment.show(getFragmentManager(), "TimePicker");
+
+        String loginAluno = edtIdContutor.getText().toString();
+
+        // TODO - IF login preenchido
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("CFC_SESSAO_GERAL", 0);
+        String instrutor_sessao = pref.getString("INSTRUTOR_SESSAO",null);
+        Instrutor instrutorLogado = null;
+        if(instrutor_sessao != null &&  !"".equals(instrutor_sessao)){
+            instrutorLogado = Util.deserialize(instrutor_sessao, Instrutor.class);
+            new IniciarAulaTask(getBaseContext(), pref, loginAluno, instrutorLogado.getId()).execute();
+        }
+
+       // startActivity(new Intent(getBaseContext(), TarefaAulaActivity.class));
+
     }
 
 
@@ -139,7 +158,10 @@ public class IniciarAulaActivity extends AppCompatActivity {
     }
 
 
-    public void addItensNoCombo() {
+   /* public void addItensNoCombo() {
+        // categorias
+        categorias.add("Categoria A");
+        categorias.add("Categoria B");
 
         Spinner spinner = (Spinner) findViewById(R.id.comboCategoria);
 
@@ -147,7 +169,8 @@ public class IniciarAulaActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, categorias);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
-    }
+
+    }*/
 
     public void addListenerOnSpinnerItemSelection() {
 

@@ -30,7 +30,7 @@ public class ExercicioAdapter extends ArrayAdapter<Exercicio> {
         Exercicio exercicio = getItem(position);
 
         TextView titulo = (TextView) itemView.findViewById(R.id.tituloExercicio);
-        titulo.setText(exercicio.getTitulo());
+        titulo.setText(exercicio.getNome());
 
         return itemView;
     }

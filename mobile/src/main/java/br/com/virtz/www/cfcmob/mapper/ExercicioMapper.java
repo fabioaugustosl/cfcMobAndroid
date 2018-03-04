@@ -13,13 +13,13 @@ public class ExercicioMapper {
         if(exercicio.getId() != null){
             c.put("id", exercicio.getId());
         }
-        c.put("titulo", exercicio.getTitulo());
-        if(exercicio.getIdEmpresa() != null){
+        c.put("titulo", exercicio.getNome());
+       /* if(exercicio.getIdEmpresa() != null){
             c.put("id_empresa", exercicio.getIdEmpresa());
         }
         if(exercicio.getCategoria() != null){
             c.put("id_categoria", exercicio.getCategoria().getId());
-        }
+        }*/
         return c;
     }
 

@@ -1,34 +1,83 @@
 package br.com.virtz.www.cfcmob.bean;
 
 
-public class Avaliacao {
+import java.io.Serializable;
 
-    private Integer id;
-    private Double pontos;
-    private Aula aula;
+public class Avaliacao implements Serializable {
 
-    public Integer getId() {
+    private String id;
+    private String nomeAvaliador;
+    private String idAula;
+    private String cfc;
+    private String loginAluno;
+    private Integer nota;
+    private Aluno aluno;
+    private Exercicio exercicio;
+
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Double getPontos() {
-        return pontos;
+    public String getNomeAvaliador() {
+        return nomeAvaliador;
     }
 
-    public void setPontos(Double pontos) {
-        this.pontos = pontos;
+    public void setNomeAvaliador(String nomeAvaliador) {
+        this.nomeAvaliador = nomeAvaliador;
     }
 
-    public Aula getAula() {
-        return aula;
+    public String getIdAula() {
+        return idAula;
     }
 
-    public void setAula(Aula aula) {
-        this.aula = aula;
+    public void setIdAula(String idAula) {
+        this.idAula = idAula;
     }
+
+    public String getCfc() {
+        return cfc;
+    }
+
+    public void setCfc(String cfc) {
+        this.cfc = cfc;
+    }
+
+    public String getLoginAluno() {
+        return loginAluno;
+    }
+
+    public void setLoginAluno(String loginAluno) {
+        this.loginAluno = loginAluno;
+    }
+
+    public Integer getNota() {
+        return nota;
+    }
+
+    public void setNota(Integer nota) {
+        this.nota = nota;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public Exercicio getExercicio() {
+        return exercicio;
+    }
+
+    public void setExercicio(Exercicio exercicio) {
+        this.exercicio = exercicio;
+    }
+
 
 }
