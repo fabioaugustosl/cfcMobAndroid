@@ -1,5 +1,7 @@
 package br.com.virtz.www.cfcmob.restServices;
 
+import java.util.List;
+
 import br.com.virtz.www.cfcmob.bean.Aluno;
 import br.com.virtz.www.cfcmob.bean.Cfc;
 import retrofit2.Call;
@@ -13,8 +15,8 @@ import retrofit2.http.Query;
 
 public interface AlunoRestServiceInterface {
 
-    public static final String url= "http://blablz.com.br/cfcrest/api/aluno/v1/";
+    public static final String url= "http://35.160.247.116:8001/api/aluno/v1/";
 
-    @GET
-    Call<Aluno> getAluno(@Query("login") String login);
+    @GET("./")
+    Call<List<Aluno>> getAluno(@Query("login") String login);
 }

@@ -44,10 +44,10 @@ public class CarregarCfcTask extends AsyncTask<Void, Void, Cfc> {
 
         Cfc cfc = null;
 
-        //CfcRestService rest = new CfcRestService();
-        //cfc = rest.recuperarCfc(idCfc);
+        CfcRestService rest = new CfcRestService();
+        cfc = rest.recuperarCfc(idCfc);
 
-        cfc = new Cfc();
+      /*  cfc = new Cfc();
         cfc.setNome("ABC Auto Escola");
         cfc.setId("12345");
         cfc.setCidade("BH");
@@ -62,7 +62,7 @@ public class CarregarCfcTask extends AsyncTask<Void, Void, Cfc> {
 
         cfc.setExercicios(new ArrayList<Exercicio>());
         cfc.getExercicios().add(e1);
-        cfc.getExercicios().add(e2);
+        cfc.getExercicios().add(e2);*/
 
 
         SharedPreferences.Editor editor = preferences.edit();

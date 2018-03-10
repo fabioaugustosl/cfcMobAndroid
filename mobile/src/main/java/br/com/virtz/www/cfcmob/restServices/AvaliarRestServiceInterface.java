@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 /**
@@ -14,10 +15,10 @@ import retrofit2.http.POST;
 
 public interface AvaliarRestServiceInterface {
 
-    public static final String url = "http://blablz.com.br/cfcrest/api/avaliacao/v1/";
+    public static final String url = "http://35.160.247.116:8001/api/avaliacao/v1/";
 
-    @POST
-    @FormUrlEncoded
+    @POST("./")
+    @Headers("Content-Type: application/json")
     Call<Avaliacao> avaliar(@Body Avaliacao avaliacao);
 
 }

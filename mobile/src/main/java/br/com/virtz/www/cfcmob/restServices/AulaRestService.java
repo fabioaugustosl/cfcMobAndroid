@@ -20,10 +20,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AulaRestService {
 
-    public Aula iniciarAula(String periodo, String aluno, String cfc){
+    public Aula iniciarAula(String periodo, String aluno, String cfc, String instrutor){
         Aula aula = new Aula();
         aula.setAluno(aluno);
         aula.setCfc(cfc);
+        aula.setInstrutor(instrutor);
         aula.setPeriodo(periodo);
 
         Retrofit retrofit = new Retrofit.Builder()

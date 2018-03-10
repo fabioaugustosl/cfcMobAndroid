@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -48,30 +49,34 @@ public class IniciarAulaTask extends AsyncTask<Void, Void, Aluno> {
 
         Aluno aluno = null;
 
-        //AlunoRestService rest = new AlunoRestService();
-        //aluno = rest.recuperarAlunoPeloLogin(loginAluno);
+        AlunoRestService rest = new AlunoRestService();
+        aluno = rest.recuperarAlunoPeloLogin(loginAluno);
 
-
-
-        aluno = new Aluno();
-        aluno.setNome("Fabio Lopes");
-        aluno.setId("12345");
+        if(aluno == null) {
+            aluno = new Aluno();
+            aluno.setNome("Fabio Lopes");
+            aluno.setId("12345");
+        }
 
         Aula aula = null;
 
-        // if aluno != null
-        //AulaRestService restAula = new AulaRestService();
-        //aula = restAula.iniciarAula(DataHoraUtil.recuperarPeriodo(), loginAluno, aluno.getCfc());
-        aula = new Aula();
-        aula.setPeriodo("MANHA");
-        aula.setCfc("1234567");
-        aula.setInstrutor(instrutor);
-        aula.setAluno(loginAluno);
+        if(aluno != null){
+            AulaRestService restAula = new AulaRestService();
+            aula = restAula.iniciarAula(DataHoraUtil.recuperarPeriodo(), aluno.getId(), aluno.getCfc(), instrutor);
 
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("ALUNO_SESSAO", Util.serialize(aluno));
-        editor.putString("AULA_SESSAO", Util.serialize(aula));
-        editor.commit();
+            if(aula == null) {
+                aula = new Aula();
+                aula.setPeriodo("MANHA");
+                aula.setCfc("1234567");
+                aula.setInstrutor(instrutor);
+                aula.setAluno(loginAluno);
+            }
+
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("ALUNO_SESSAO", Util.serialize(aluno));
+            editor.putString("AULA_SESSAO", Util.serialize(aula));
+            editor.commit();
+        }
 
         return aluno;
     }
@@ -80,12 +85,15 @@ public class IniciarAulaTask extends AsyncTask<Void, Void, Aluno> {
     @Override
     protected void onPostExecute(Aluno aluno) {
         // TODO - if aluno não existe exibir mensagem
+        if(aluno == null){
+            Toast.makeText(mContext,
+                    "Aluno não encontrado!", Toast.LENGTH_SHORT).show();
+        } else {
 
-        // ELSE esse codigo abaixo
-
-        Intent intentPrincipal = new Intent(mContext, TarefaAulaActivity.class);
-        intentPrincipal.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        mContext.startActivity(intentPrincipal);
+            Intent intentPrincipal = new Intent(mContext, TarefaAulaActivity.class);
+            intentPrincipal.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(intentPrincipal);
+        }
     }
 
 }

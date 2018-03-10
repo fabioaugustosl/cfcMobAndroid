@@ -12,7 +12,7 @@ import retrofit2.http.Path;
 
 public interface CfcRestServiceInterface {
 
-    public static final String urlCfc= "http://blablz.com.br/cfcrest/api/cfc/v1/";
+    public static final String urlCfc= "http://35.160.247.116:8001/api/cfc/v1/";
 
     @GET("{idCfc}")
     Call<Cfc> getCfc(@Path("idCfc") String idCfc);

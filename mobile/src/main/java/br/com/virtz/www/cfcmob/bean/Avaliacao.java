@@ -6,6 +6,7 @@ import java.io.Serializable;
 public class Avaliacao implements Serializable {
 
     private String id;
+    private String _id;
     private String nomeAvaliador;
     private String idAula;
     private String cfc;
@@ -15,9 +16,18 @@ public class Avaliacao implements Serializable {
     private Exercicio exercicio;
 
 
-    public String getId() {
-        return id;
+    public void set_id(String _id) {
+        this.id = _id;
+        this._id = _id;
     }
+
+    public String getId() {
+        if (id != null) {
+            return id;
+        }
+        return _id;
+    }
+
 
     public void setId(String id) {
         this.id = id;

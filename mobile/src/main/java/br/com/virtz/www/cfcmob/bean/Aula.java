@@ -7,6 +7,7 @@ import java.util.Date;
 public class Aula implements Serializable{
 
     private String id;
+    private String _id;
     private Date data;
     private String periodo;
     private String aluno;
@@ -14,8 +15,16 @@ public class Aula implements Serializable{
     private String instrutor;
 
 
+    public void set_id(String _id) {
+        this.id = _id;
+        this._id = _id;
+    }
+
     public String getId() {
-        return id;
+        if (id != null) {
+            return id;
+        }
+        return _id;
     }
 
     public void setId(String id) {

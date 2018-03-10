@@ -6,6 +6,7 @@ import java.io.Serializable;
 public class Aluno implements Serializable {
 
     private String id;
+    private String _id;
     private String nome;
     private String cfc;
     private String email;
@@ -13,8 +14,16 @@ public class Aluno implements Serializable {
     private String login;
 
 
+    public void set_id(String _id) {
+        this.id = _id;
+        this._id = _id;
+    }
+
     public String getId() {
-        return id;
+        if(id != null){
+            return id;
+        }
+        return _id;
     }
 
     public void setId(String id) {

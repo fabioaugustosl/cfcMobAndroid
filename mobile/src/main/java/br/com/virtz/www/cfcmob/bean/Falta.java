@@ -11,6 +11,7 @@ public class Falta implements Serializable {
     private String categoria;
 
 
+
     public Falta() {
     }
 

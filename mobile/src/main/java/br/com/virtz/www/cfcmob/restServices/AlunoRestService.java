@@ -1,6 +1,7 @@
 package br.com.virtz.www.cfcmob.restServices;
 
 import java.io.IOException;
+import java.util.List;
 
 import br.com.virtz.www.cfcmob.bean.Aluno;
 import br.com.virtz.www.cfcmob.bean.Cfc;
@@ -21,10 +22,13 @@ public class AlunoRestService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         AlunoRestServiceInterface service = retrofit.create(AlunoRestServiceInterface.class);
-        Call<Aluno> call = service.getAluno(login);
+        Call<List<Aluno>> call = service.getAluno(login);
         try {
-            Response<Aluno> resp = call.execute();
-            return resp.body();
+            Response<List<Aluno>> resp = call.execute();
+            List<Aluno> alunos = resp.body();
+            if(alunos != null && !alunos.isEmpty()) {
+                return alunos.get(0);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -59,21 +59,24 @@ public class AvaliarExercicioTask extends AsyncTask<Void, Void, Avaliacao> {
         avaliacao.setNomeAvaliador(this.nomeInstrutor);
         avaliacao.setNota(this.nota);
 
-        //AvaliarRestService rest = new AvaliarRestService();
-        //Avaliacao avaliacaoRetorno = rest.avaliar(avaliacao);
+        AvaliarRestService rest = new AvaliarRestService();
+        Avaliacao avaliacaoRetorno = rest.avaliar(avaliacao);
 
-        //return avaliacaoRetorno;
+        return avaliacaoRetorno;
 
-        return avaliacao;
+        //return avaliacao;
     }
 
 
     @Override
     protected void onPostExecute(Avaliacao avaliacao) {
-
-        Toast.makeText(mContext,
-                "Exercício avaliado com sucesso!", Toast.LENGTH_SHORT).show();
-
+        if(avaliacao == null){
+            Toast.makeText(mContext,
+                    "Ocorreu um erro ao avaliar exercício.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(mContext,
+                    "Exercício avaliado com sucesso!", Toast.LENGTH_SHORT).show();
+        }
         mContext.startActivity(new Intent(mContext, TarefaAulaActivity.class));
 
     }

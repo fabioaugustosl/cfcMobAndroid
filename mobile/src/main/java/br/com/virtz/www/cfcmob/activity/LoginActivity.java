@@ -38,6 +38,7 @@ import java.util.List;
 import br.com.virtz.www.cfcmob.R;
 import br.com.virtz.www.cfcmob.bean.Endereco;
 import br.com.virtz.www.cfcmob.bean.Instrutor;
+import br.com.virtz.www.cfcmob.restServices.InstrutorRestService;
 import br.com.virtz.www.cfcmob.restServices.PostomanService;
 import br.com.virtz.www.cfcmob.task.CarregarCfcTask;
 import br.com.virtz.www.cfcmob.util.Util;
@@ -213,7 +214,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() > 1;
     }
 
     /**
@@ -322,6 +323,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected Instrutor doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
+            Instrutor intrutor = null;
+
+            InstrutorRestService instrutorService = new InstrutorRestService();
+            intrutor = instrutorService.autenticar(mEmail, mPassword);
 
             /*
             Retrofit retrofit = new Retrofit.Builder()
@@ -352,13 +357,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
             });
 */
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return null;
+            if(intrutor != null){
+                return intrutor;
             }
-
             for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mEmail)) {
