@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="br.com.virtz.www.cfcmob.activity.IniciarAulaActivity">
     <item
-        android:id="@+id/menu_configuracoes"
+        android:id="@+id/menu_listar_aluno"
         android:orderInCategory="100"
-        android:title="@string/menu_configuracoes"
+        android:title="@string/menu_listar_aluno"
         app:showAsAction="never" />
 
     <item

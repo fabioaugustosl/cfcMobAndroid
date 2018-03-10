@@ -12,6 +12,7 @@ public class Aluno implements Serializable {
     private String email;
     private String celular;
     private String login;
+    private String categoria;
 
 
     public void set_id(String _id) {
@@ -70,4 +71,15 @@ public class Aluno implements Serializable {
         this.login = login;
     }
 
+    public String get_id() {
+        return _id;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 }

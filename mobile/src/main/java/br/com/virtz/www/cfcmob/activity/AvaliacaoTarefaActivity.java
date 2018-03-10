@@ -53,7 +53,7 @@ public class AvaliacaoTarefaActivity extends AppCompatActivity {
 
     public void avaliarTarefa(View view){
 
-        new AvaliarExercicioTask(getBaseContext(), aluno, exercicio, aula.getId(), instrutor.getNome(), ratingBar.getNumStars()).execute();
+        new AvaliarExercicioTask(getBaseContext(), aluno, exercicio, aula.getId(), instrutor.getNome(), Double.valueOf(ratingBar.getRating())).execute();
         //Aluno aluno, Exercicio exercicio, String idAula, String nomeInstrutor, Double nota
     }
 }

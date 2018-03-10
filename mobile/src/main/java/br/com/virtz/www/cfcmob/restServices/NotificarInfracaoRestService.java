@@ -3,9 +3,8 @@ package br.com.virtz.www.cfcmob.restServices;
 import java.io.IOException;
 
 import br.com.virtz.www.cfcmob.bean.Avaliacao;
-import br.com.virtz.www.cfcmob.bean.Cfc;
+import br.com.virtz.www.cfcmob.bean.Infracao;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -13,15 +12,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by fabio on 03/03/18.
  */
 
-public class AvaliarRestService {
+public class NotificarInfracaoRestService {
 
-    public boolean avaliar(Avaliacao avaliacao){
+    public boolean notificar(Infracao infracao){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(AvaliarRestServiceInterface.url)
+                .baseUrl(NotificarInfracaoRestServiceInterface.url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        AvaliarRestServiceInterface service = retrofit.create(AvaliarRestServiceInterface.class);
-        Call<Void> call = service.avaliar(avaliacao);
+        NotificarInfracaoRestServiceInterface service = retrofit.create(NotificarInfracaoRestServiceInterface.class);
+        Call<Void> call = service.avaliar(infracao);
         try {
             call.execute();
             return true;

@@ -2,7 +2,6 @@ package br.com.virtz.www.cfcmob.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,21 +9,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import br.com.virtz.www.cfcmob.R;
-import br.com.virtz.www.cfcmob.adapters.ExercicioAdapter;
-import br.com.virtz.www.cfcmob.bean.Aluno;
-import br.com.virtz.www.cfcmob.bean.Aula;
-import br.com.virtz.www.cfcmob.bean.Cfc;
-import br.com.virtz.www.cfcmob.bean.Exercicio;
-import br.com.virtz.www.cfcmob.bean.Instrutor;
-import br.com.virtz.www.cfcmob.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TarefaAulaActivity extends AppCompatActivity {
+import br.com.virtz.www.cfcmob.R;
+import br.com.virtz.www.cfcmob.adapters.ExercicioAdapter;
+import br.com.virtz.www.cfcmob.adapters.FaltaAdapter;
+import br.com.virtz.www.cfcmob.bean.Aluno;
+import br.com.virtz.www.cfcmob.bean.Aula;
+import br.com.virtz.www.cfcmob.bean.Cfc;
+import br.com.virtz.www.cfcmob.bean.Exercicio;
+import br.com.virtz.www.cfcmob.bean.Falta;
+import br.com.virtz.www.cfcmob.bean.Instrutor;
+import br.com.virtz.www.cfcmob.task.AvaliarExercicioTask;
+import br.com.virtz.www.cfcmob.task.NotificarInfracaoTask;
+import br.com.virtz.www.cfcmob.util.Util;
+
+public class NotificarInfracaoActivity extends AppCompatActivity {
 
     private Aluno alunoLogado = null;
     private Cfc cfcLogado = null;
@@ -39,11 +41,11 @@ public class TarefaAulaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tarefa_aula);
+        setContentView(R.layout.activity_notificar_infracao);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //toolbar.setTitle("Qual exercício será executado?");
-        //setSupportActionBar(toolbar);
+       // toolbar.setTitle("Notificar uma infração cometida durante a aula");
+       // setSupportActionBar(toolbar);
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("CFC_SESSAO_GERAL", 0);
         String aluno_sessao = pref.getString("ALUNO_SESSAO",null);
@@ -70,55 +72,27 @@ public class TarefaAulaActivity extends AppCompatActivity {
             aulaAndamento = Util.deserialize(aula_sessao, Aula.class);
         }
 
-
-        final List<Exercicio> exercicios;
-        if(cfcLogado != null){
-          exercicios = cfcLogado.getExercicios();
-        } else {
-            exercicios = new ArrayList<Exercicio>();
-            exercicios.add(new Exercicio("1", "Controle Embreagem Frontal"));
-            exercicios.add(new Exercicio("1", "Controle Embreagem de Ré"));
-            exercicios.add(new Exercicio("1", "Ré"));
-            exercicios.add(new Exercicio("1", "Baliza"));
-            exercicios.add(new Exercicio("1", "Conversão"));
-            exercicios.add(new Exercicio("1", "Retorno"));
-        }
+        final List<Falta> faltas = cfcLogado.getFaltas();
 
         opcoesTarefa = (ListView) findViewById(R.id.opcoesTarefa);
 
-        ExercicioAdapter adapter = new ExercicioAdapter(this, exercicios);
+        FaltaAdapter adapter = new FaltaAdapter(this, faltas);
         opcoesTarefa.setAdapter(adapter);
 
         opcoesTarefa.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intentAvaliacao = new Intent(getBaseContext(), AvaliacaoTarefaActivity.class);
-                Exercicio e = exercicios.get(position);
-                intentAvaliacao.putExtra("exercicio", Util.serialize(e));
-                intentAvaliacao.putExtra("aluno", Util.serialize(alunoLogado));
-                intentAvaliacao.putExtra("instrutor", Util.serialize(instrutorLogado));
-                intentAvaliacao.putExtra("aula", Util.serialize(aulaAndamento));
+                Falta f = faltas.get(position);
 
-                startActivity(intentAvaliacao);
+                new NotificarInfracaoTask(getBaseContext(), alunoLogado, f, aulaAndamento.getId(), instrutorLogado.getNome()).execute();
             }
         });
-
     }
 
 
-
-    public void notificarInfracao(View view){
+    public void voltar(View view){
         Intent intentInfracao = new Intent(getBaseContext(), NotificarInfracaoActivity.class);
         startActivity(intentInfracao);
-    }
-
-
-
-    public void finalizarAula(View view){
-        Intent intentAula = new Intent(getBaseContext(), IniciarAulaActivity.class);
-        intentAula.putExtra("message", "Aula finalizada com sucesso!");
-
-        startActivity(intentAula);
     }
 
 }

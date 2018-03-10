@@ -7,6 +7,7 @@ public class Exercicio implements Serializable {
 
 
     private String id;
+    private String _id;
     private String nome; //A, B, C, D, E
     private String categoria;
 
@@ -20,8 +21,21 @@ public class Exercicio implements Serializable {
     }
 
 
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this.id = _id;
+        this._id = _id;
+    }
+
     public String getId() {
-        return id;
+
+        if (id != null) {
+            return id;
+        }
+        return _id;
     }
 
     public void setId(String id) {

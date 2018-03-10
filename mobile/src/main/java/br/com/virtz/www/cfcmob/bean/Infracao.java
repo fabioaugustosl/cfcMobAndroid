@@ -3,7 +3,7 @@ package br.com.virtz.www.cfcmob.bean;
 
 import java.io.Serializable;
 
-public class Avaliacao implements Serializable {
+public class Infracao implements Serializable {
 
     private String id;
     private String _id;
@@ -11,9 +11,8 @@ public class Avaliacao implements Serializable {
     private String idAula;
     private String cfc;
     private String loginAluno;
-    private Double nota;
     private Aluno aluno;
-    private Exercicio exercicio;
+    private Falta falta;
 
 
     public void set_id(String _id) {
@@ -28,6 +27,9 @@ public class Avaliacao implements Serializable {
         return _id;
     }
 
+    public String get_id() {
+        return _id;
+    }
 
     public void setId(String id) {
         this.id = id;
@@ -65,14 +67,6 @@ public class Avaliacao implements Serializable {
         this.loginAluno = loginAluno;
     }
 
-    public Double getNota() {
-        return nota;
-    }
-
-    public void setNota(Double nota) {
-        this.nota = nota;
-    }
-
     public Aluno getAluno() {
         return aluno;
     }
@@ -81,13 +75,12 @@ public class Avaliacao implements Serializable {
         this.aluno = aluno;
     }
 
-    public Exercicio getExercicio() {
-        return exercicio;
+
+    public Falta getFalta() {
+        return falta;
     }
 
-    public void setExercicio(Exercicio exercicio) {
-        this.exercicio = exercicio;
+    public void setFalta(Falta falta) {
+        this.falta = falta;
     }
-
-
 }

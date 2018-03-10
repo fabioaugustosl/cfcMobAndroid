@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.virtz.www.cfcmob.activity.NotificarInfracaoActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/txtTituloFaltas"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Selecione a infração cometida pelo aluno"
+        android:background="@color/highlighted_text_material_dark"
+        android:layout_marginBottom="5dp"
+        android:padding="10dp"/>
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/opcoesTarefa"
+        android:layout_marginTop="5dp"
+        android:layout_centerVertical="true"
+        android:visibility="visible"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:layout_marginTop="15dp"
+        android:id="@+id/btnFinalizar"
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:onClick="voltar"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"    />
+
+</android.support.constraint.ConstraintLayout>

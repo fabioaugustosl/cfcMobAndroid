@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="br.com.virtz.www.cfcmob.activity.ListarAlunoActivity">
+
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:background="#00b4d4"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tituloListarAluno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alunos"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="8"
+                android:textColor="#292241"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/layoutPesquisa"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/txtNomeAluno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Nome:"
+                android:textStyle="bold"
+                android:textColor="#666666"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edtNomeAluno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite o nome do aluno "
+                android:maxLines="1"/>
+
+            <TextView
+                android:id="@+id/txtCategoriaNovoAluno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Nome:"
+                android:textStyle="bold"
+                android:textColor="#666666"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/comboCategoria"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:spinnerMode="dialog"
+                android:visibility="invisible"
+                android:layout_below="@+id/txtCategoriaNovoAluno"
+                android:dropDownWidth="match_parent" />
+
+
+            <Button
+                android:id="@+id/btnPesquisar"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Pesquisar"
+                android:textSize="30dp"
+                android:onClick="pesquisar"
+                android:textColor="@android:color/white"
+                android:background="#d40030"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/lista_alunos"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_centerVertical="true"
+        android:layout_below="@+id/layoutPesquisa">
+    </ListView>
+
+</LinearLayout>

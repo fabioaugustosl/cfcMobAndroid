@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/edtNome"
+        android:id="@+id/edtNomeAluno"
         android:layout_below="@+id/txtNome"
         android:layout_alignEnd="@+id/txtTituloCadAluno"
         android:layout_alignParentStart="true"
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/edtEmail"
+            android:id="@+id/edtEmailAluno"
             android:layout_below="@+id/txtEmail"
             android:layout_alignParentStart="true"
             android:layout_alignEnd="@+id/edtNome"
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/edtCelularAluno"
         android:layout_below="@+id/txtCelular"
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/edtEmail"
@@ -97,24 +97,7 @@
         android:phoneNumber="true"
         android:scrollbarAlwaysDrawHorizontalTrack="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Insira um IDENTIFICADOR para o aluno. Pode conter letras e números. Esse Id será usado para registrar e consultar cada aula. "
-        android:id="@+id/txtIDExplicacao"
-        android:layout_below="@+id/editText"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtId"
-        android:layout_below="@+id/txtIDExplicacao"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/txtIDExplicacao"
-        android:maxLength="100" />
 
     <Button
         android:layout_width="365dp"

@@ -33,6 +33,7 @@ import br.com.virtz.www.cfcmob.bean.Instrutor;
 import br.com.virtz.www.cfcmob.datepicker.DatePickerFragment;
 import br.com.virtz.www.cfcmob.task.CarregarCfcTask;
 import br.com.virtz.www.cfcmob.task.IniciarAulaTask;
+import br.com.virtz.www.cfcmob.task.ListarAlunosTask;
 import br.com.virtz.www.cfcmob.util.Util;
 
 public class IniciarAulaActivity extends AppCompatActivity {
@@ -105,8 +106,8 @@ public class IniciarAulaActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
 
         switch (item.getItemId()) {
-            case R.id.menu_configuracoes:
-                irParaConfiguracoes();
+            case R.id.menu_listar_aluno:
+                irParaListargemUsuario();
                 return true;
             case R.id.menu_cad_aluno:
                 irParaCadastrarUsuario();
@@ -151,6 +152,10 @@ public class IniciarAulaActivity extends AppCompatActivity {
 
     public void irParaCadastrarUsuario() {
         startActivity(new Intent(getBaseContext(), NovoAlunoActivity.class));
+    }
+
+    public void irParaListargemUsuario() {
+        startActivity(new Intent(getBaseContext(), ListarAlunoActivity.class));
     }
 
     public void sair() {

@@ -16,7 +16,7 @@
     </string>
     <string name="title_activity_inicio_aula">Iniciar Aula</string>
 
-
+    <string name="menu_listar_aluno">Listar Alunos</string>
     <string name="menu_configuracoes">Configurações</string>
     <string name="menu_cad_aluno">Cadastrar Aluno</string>
     <string name="menu_sair">Sair</string>
